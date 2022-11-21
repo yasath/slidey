@@ -1,0 +1,21 @@
+:root {
+    --background: #fff;
+    --font-color: #494949;
+
+    --black: #131111;
+    --white: #e0e0e0;
+    --red: #ff2323;
+    --green: #005f20;
+    --blue: #070bce;
+
+    --heading-font-size: 40px;
+
+    font-family: sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #3c3c3c;
+        --font-color: #fafafa;
+    }
+}
