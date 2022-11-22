@@ -1,3 +1,3 @@
-import TestComponent from "./TestComponent";
+import Slide from "./Slide";
 
-export { TestComponent };
+export { Slide };
