@@ -31,3 +31,24 @@ To export the Storybook as static files:
 ```
 npm run storybook:export
 ```
+
+### Generating new components
+
+Instead of copy-pasting files to create a new component, this command will generate all the boilerplate files needed:
+
+```
+npm run generate YourComponentName
+```
+
+This will generate:
+
+```
+/src
+    /YourComponentName
+        YourComponentName.tsx
+        YourComponentName.stories.tsx
+        YourComponentName.test.tsx
+        YourComponentName.types.ts
+```
+
+The component must also be added to the `src/index.ts` exports for the library to export the component.
