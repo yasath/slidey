@@ -1,11 +1,15 @@
 {
-    "name": "slidey",
+    "name": "@yasath/slidey",
     "version": "0.0.1",
     "main": "build/index.js",
     "module": "build/index.esm.js",
     "files": [
         "build"
     ],
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+    },
+    "repository": "git://github.com/yasath/slidey",
     "types": "build/index.d.ts",
     "description": "React presentations without having to understand the React",
     "scripts": {
