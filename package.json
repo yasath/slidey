@@ -1,6 +1,6 @@
 {
     "name": "@yasath/slidey",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "main": "build/index.js",
     "module": "build/index.esm.js",
     "files": [
@@ -57,5 +57,8 @@
         "styled-components": "^5.3.6",
         "ts-jest": "^26.5.6",
         "typescript": "^4.8.4"
+    },
+    "dependencies": {
+        "react-katex": "^3.0.1"
     }
 }
