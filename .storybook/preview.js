@@ -44,6 +44,13 @@ export const decorators = [(Story) => <div style={{ maxWidth: '48rem' }}><Story 
  *
  * With backgrounds, you configure the list of backgrounds that every story can render in.
  */
+export const parameters = {
+    options: {
+        storySort: {
+            order: ['Slide', '*'],
+        },
+    },
+};
 
 /**
  * Global Types
