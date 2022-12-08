@@ -26,6 +26,7 @@ import "../src/index.css";
  * Each story throughout the library will be wrapped in a div with a margin of 3
  */
 
+export const decorators = [(Story) => <div style={{ maxWidth: '48rem' }}><Story /></div>];
 /**
  * Parameters
  *
