@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { SlideProps } from "./Slide.types";
 
 const SlideContainer = styled.div`
-    width: 85%;
+    width: 100%;
     aspect-ratio: 16/9;
     border: 1px solid #000000;
     padding: 48px;
