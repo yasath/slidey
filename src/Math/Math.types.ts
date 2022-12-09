@@ -1,3 +1,3 @@
 export interface MathProps {
-    children: string;
+    equation: string;
 }

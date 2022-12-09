@@ -9,7 +9,7 @@ describe("Slide component tests", () => {
 
     beforeEach(() => {
         props = {
-            children: String.raw`\begin{aligned}P(X_1, \ldots, X_n) &=P (X_1, \ldots, X_{n-1} ) Pm (X_n \mid X_1, \ldots, X_{n-1} ) \\
+            equation: String.raw`\begin{aligned}P(X_1, \ldots, X_n) &=P (X_1, \ldots, X_{n-1} ) Pm (X_n \mid X_1, \ldots, X_{n-1} ) \\
             &=P (X_1, \ldots, X_{n-2} ) P (X_{n-1} \mid X_1, \ldots, X_{n-2} ) P (X_n \mid X_1, \ldots, X_{n-1} ) \\
             &=\ldots \\
             &=\prod_{i=1}^n P(X_i \mid X_1, \ldots, X_{i-1})\end{aligned}`,
