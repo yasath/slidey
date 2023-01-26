@@ -35,6 +35,11 @@ export default {
                     src: "src/index.css",
                     dest: "build",
                     rename: "index.css"
+                },
+                {
+                    src: "src/github-markdown-light.css",
+                    dest: "build",
+                    rename: "github-markdown-light.css"
                 }
             ]
         })
