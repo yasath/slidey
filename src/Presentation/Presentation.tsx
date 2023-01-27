@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Children, useState } from "react";
 import styled from "styled-components";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 
@@ -48,11 +48,12 @@ const CurrentSlide = styled.strong`
 `;
 
 const Presentation: React.FC<PresentationProps> = ({ children }) => {
+    const arrayChildren = Children.toArray(children);
     const [slideIndex, setSlideIndex] = useState(0);
 
     return (
         <ViewerContainer>
-            {children[slideIndex]}
+            {arrayChildren[slideIndex]}
             <ControlsContainer>
                 <NavButton
                     disabled={slideIndex == 0}
@@ -63,11 +64,11 @@ const Presentation: React.FC<PresentationProps> = ({ children }) => {
                 </NavButton>
 
                 <SlideCounter>
-                    <CurrentSlide>{slideIndex + 1}</CurrentSlide> of {children.length}
+                    <CurrentSlide>{slideIndex + 1}</CurrentSlide> of {arrayChildren.length}
                 </SlideCounter>
 
                 <NavButton
-                    disabled={slideIndex == children.length - 1}
+                    disabled={slideIndex == arrayChildren.length - 1}
                     onClick={() => setSlideIndex(slideIndex + 1)}
                     data-testid="next-slide"
                 >
