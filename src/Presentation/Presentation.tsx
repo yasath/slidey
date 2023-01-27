@@ -1,4 +1,4 @@
-import React, { Children, useState } from "react";
+import React, { Children, ReactChild, ReactElement, ReactNode, useState } from "react";
 import styled from "styled-components";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 
@@ -47,13 +47,21 @@ const CurrentSlide = styled.strong`
     color: #000;
 `;
 
+const getNestedSlides = (nodeChildren: ReactNode) => {
+    let children = Children.toArray(nodeChildren);
+    while (children.length < 2) {
+        children = Children.map(children, (element: ReactElement) => element.props.children);
+    }
+    return children as ReactChild[];
+}
+
 const Presentation: React.FC<PresentationProps> = ({ children }) => {
-    const arrayChildren = Children.toArray(children);
+    const arraySlides: ReactChild[] = getNestedSlides(children);
     const [slideIndex, setSlideIndex] = useState(0);
 
     return (
         <ViewerContainer>
-            {arrayChildren[slideIndex]}
+            {arraySlides[slideIndex]}
             <ControlsContainer>
                 <NavButton
                     disabled={slideIndex == 0}
@@ -64,11 +72,11 @@ const Presentation: React.FC<PresentationProps> = ({ children }) => {
                 </NavButton>
 
                 <SlideCounter>
-                    <CurrentSlide>{slideIndex + 1}</CurrentSlide> of {arrayChildren.length}
+                    <CurrentSlide>{slideIndex + 1}</CurrentSlide> of {arraySlides.length}
                 </SlideCounter>
 
                 <NavButton
-                    disabled={slideIndex == arrayChildren.length - 1}
+                    disabled={slideIndex == arraySlides.length - 1}
                     onClick={() => setSlideIndex(slideIndex + 1)}
                     data-testid="next-slide"
                 >

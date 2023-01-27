@@ -1,6 +1,5 @@
-import { ReactElement } from "react";
-import Slide from "../Slide";
+import { ReactNode } from "react";
 
 export interface PresentationProps {
-    children: ReactElement<typeof Slide>[];
+    children: ReactNode;
 }
