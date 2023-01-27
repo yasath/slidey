@@ -40,6 +40,10 @@ export default {
                     src: "src/github-markdown-light.css",
                     dest: "build",
                     rename: "github-markdown-light.css"
+                },
+                {
+                    src: 'node_modules/katex/dist/fonts/*.woff2',
+                    dest: 'build/fonts'
                 }
             ]
         })
