@@ -59,6 +59,7 @@
         "typescript": "^4.8.4"
     },
     "dependencies": {
+        "react-icons": "^4.7.1",
         "react-katex": "^3.0.1"
     }
 }

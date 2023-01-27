@@ -4,7 +4,7 @@ import { render } from "@testing-library/react";
 import Math from "./Math";
 import { MathProps } from "./Math.types";
 
-describe("Slide component tests", () => {
+describe("Math component tests", () => {
     let props: MathProps;
 
     beforeEach(() => {

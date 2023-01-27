@@ -8,11 +8,10 @@ import { SlideProps } from "./Slide.types";
 const SlideContainer = styled.div`
     width: 100%;
     aspect-ratio: 16/9;
-    border: 1px solid #ddd;
+    border: 1px solid hsla(210, 18%, 87%, 1);
     border-radius: 0.5rem;
     padding: 48px;
 `;
-
 
 const Slide: React.FC<SlideProps> = ({ title, subtitle, children }) => (
     <SlideContainer className="markdown-body">
