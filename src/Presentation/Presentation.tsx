@@ -1,8 +1,19 @@
 import React, { Children, ReactChild, ReactElement, ReactNode, useState } from "react";
 import styled from "styled-components";
-import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 
 import { PresentationProps } from "./Presentation.types";
+
+const ChevronLeft = () => (
+    <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+    </svg>
+);
+
+const ChevronRight = () => (
+    <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+    </svg>
+);
 
 const ViewerContainer = styled.div`
     display: flex;
@@ -68,7 +79,7 @@ const Presentation: React.FC<PresentationProps> = ({ children }) => {
                     onClick={() => setSlideIndex(slideIndex - 1)}
                     data-testid="previous-slide"
                 >
-                    <HiOutlineChevronLeft />
+                    <ChevronLeft />
                 </NavButton>
 
                 <SlideCounter>
@@ -80,7 +91,7 @@ const Presentation: React.FC<PresentationProps> = ({ children }) => {
                     onClick={() => setSlideIndex(slideIndex + 1)}
                     data-testid="next-slide"
                 >
-                    <HiOutlineChevronRight />
+                    <ChevronRight />
                 </NavButton>
             </ControlsContainer>
         </ViewerContainer>
