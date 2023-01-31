@@ -14,13 +14,20 @@ const SlideContainer = styled.div`
     overflow: scroll;
 `;
 
+const Subtitle = styled.h3`
+    color: #57606a;
+    margin-top: -4px !important;
+    margin-bottom: 24px !important;
+    font-weight: 500 !important;
+`;
+
 const Slide: React.FC<SlideProps> = ({ title, subtitle, children }) => (
     <SlideContainer className="markdown-body">
         {title && (
             <h1>{title}</h1>
         )}
         {subtitle && (
-            <h3>{subtitle}</h3>
+            <Subtitle>{subtitle}</Subtitle>
         )}
         {children}
     </SlideContainer>
