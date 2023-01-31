@@ -1,7 +1,8 @@
-import React, { Children, ReactChild, ReactElement, ReactNode, useEffect, useState } from "react";
+import React, { Children, ReactChild, useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { PresentationProps } from "./Presentation.types";
+import { AnimateProvider } from "../Animate/AnimateContext";
 
 const ChevronLeft = () => (
     <svg stroke="currentColor" fill="none" strokeWidth={0} viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
@@ -76,30 +77,32 @@ const Presentation: React.FC<PresentationProps> = ({ children }) => {
     }, [slideIndex]);
 
     return (
-        <ViewerContainer>
-            {arraySlides[slideIndex]}
-            <ControlsContainer>
-                <NavButton
-                    disabled={slideIndex == 0}
-                    onClick={() => setSlideIndex(slideIndex - 1)}
-                    data-testid="previous-slide"
-                >
-                    <ChevronLeft />
-                </NavButton>
+        <AnimateProvider>
+            <ViewerContainer>
+                {arraySlides[slideIndex]}
+                <ControlsContainer>
+                    <NavButton
+                        disabled={slideIndex == 0}
+                        onClick={() => setSlideIndex(slideIndex - 1)}
+                        data-testid="previous-slide"
+                    >
+                        <ChevronLeft />
+                    </NavButton>
 
-                <SlideCounter>
-                    <CurrentSlide>{slideIndex + 1}</CurrentSlide> of {arraySlides.length}
-                </SlideCounter>
+                    <SlideCounter>
+                        <CurrentSlide>{slideIndex + 1}</CurrentSlide> of {arraySlides.length}
+                    </SlideCounter>
 
-                <NavButton
-                    disabled={slideIndex == arraySlides.length - 1}
-                    onClick={() => setSlideIndex(slideIndex + 1)}
-                    data-testid="next-slide"
-                >
-                    <ChevronRight />
-                </NavButton>
-            </ControlsContainer>
-        </ViewerContainer>
+                    <NavButton
+                        disabled={slideIndex == arraySlides.length - 1}
+                        onClick={() => setSlideIndex(slideIndex + 1)}
+                        data-testid="next-slide"
+                    >
+                        <ChevronRight />
+                    </NavButton>
+                </ControlsContainer>
+            </ViewerContainer>
+        </AnimateProvider>
     );
 }
 
