@@ -11,6 +11,7 @@ const SlideContainer = styled.div`
     border: 1px solid hsla(210, 18%, 87%, 1);
     border-radius: 0.5rem;
     padding: 48px;
+    overflow: scroll;
 `;
 
 const Slide: React.FC<SlideProps> = ({ title, subtitle, children }) => (
