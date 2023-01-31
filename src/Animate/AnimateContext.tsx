@@ -1,4 +1,4 @@
-import React, { createContext, Dispatch, MutableRefObject, ReactNode, SetStateAction, useEffect, useState } from 'react';
+import React, { createContext, Dispatch, MutableRefObject, ReactNode, SetStateAction, useState } from 'react';
 
 type AnimateState = { element: MutableRefObject<any>, shown: boolean }[];
 
@@ -6,10 +6,6 @@ export const AnimateContext = createContext<{ animateState: AnimateState, setAni
 
 export const AnimateProvider = ({ children }: { children: ReactNode }) => {
     const [animateState, setAnimateState] = useState<AnimateState>([]);
-
-    useEffect(() => {
-        console.log(animateState);
-    }, [animateState]);
 
     return (
         <AnimateContext.Provider value={{ animateState, setAnimateState }}>
