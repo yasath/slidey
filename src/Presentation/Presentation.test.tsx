@@ -54,4 +54,39 @@ describe("Presentation component tests", () => {
         expect(container).toHaveTextContent("First slide");
         expect(container).toHaveTextContent("1 of 3");
     });
+
+    it("should navigate between slides on arrow keypresses", () => {
+        const { container } = renderComponent();
+        const leftArrowEvent = () => fireEvent.keyDown(container, { key: "ArrowLeft", code: "ArrowLeft" });
+        const rightArrowEvent = () => fireEvent.keyDown(container, { key: "ArrowRight", code: "ArrowRight" });
+
+        rightArrowEvent();
+        expect(container).toHaveTextContent("Second slide");
+        expect(container).toHaveTextContent("2 of 3");
+
+        rightArrowEvent();
+        expect(container).toHaveTextContent("Third slide");
+        expect(container).toHaveTextContent("3 of 3");
+
+        leftArrowEvent();
+        expect(container).toHaveTextContent("Second slide");
+        expect(container).toHaveTextContent("2 of 3");
+
+        leftArrowEvent();
+        expect(container).toHaveTextContent("First slide");
+        expect(container).toHaveTextContent("1 of 3");
+    });
+
+    it("should navigate through slides on spacebar presses", () => {
+        const { container } = renderComponent();
+        const spaceEvent = () => fireEvent.keyDown(container, { key: " ", code: "Space" });
+
+        spaceEvent();
+        expect(container).toHaveTextContent("Second slide");
+        expect(container).toHaveTextContent("2 of 3");
+
+        spaceEvent();
+        expect(container).toHaveTextContent("Third slide");
+        expect(container).toHaveTextContent("3 of 3");
+    });
 });

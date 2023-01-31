@@ -1,4 +1,4 @@
-import React, { Children, ReactChild, ReactElement, ReactNode, useState } from "react";
+import React, { Children, ReactChild, ReactElement, ReactNode, useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { PresentationProps } from "./Presentation.types";
@@ -69,6 +69,19 @@ const getNestedSlides = (nodeChildren: ReactNode) => {
 const Presentation: React.FC<PresentationProps> = ({ children }) => {
     const arraySlides: ReactChild[] = getNestedSlides(children);
     const [slideIndex, setSlideIndex] = useState(0);
+
+    const keyHandler = (e: KeyboardEvent) => {
+        if (e.key === 'ArrowLeft' && slideIndex !== 0) {
+            setSlideIndex(slideIndex - 1);
+        }
+        if ((e.key === 'ArrowRight' || e.key === ' ') && slideIndex !== arraySlides.length - 1) {
+            setSlideIndex(slideIndex + 1);
+        }
+    };
+    useEffect(() => {
+        window.addEventListener('keydown', keyHandler, false);
+        return () => window.removeEventListener('keydown', keyHandler, false);
+    }, [slideIndex]);
 
     return (
         <ViewerContainer>
