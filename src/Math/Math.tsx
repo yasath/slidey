@@ -5,7 +5,11 @@ import 'katex/dist/katex.min.css';
 import { MathProps } from "./Math.types";
 
 const Math: React.FC<MathProps> = ({ equation }) => (
-    <InlineMath math={equation} />
+    <>
+        {equation && (
+            <InlineMath math={equation} />
+        )}
+    </>
 );
 
 export default Math;

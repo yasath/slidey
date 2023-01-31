@@ -25,4 +25,20 @@ describe("Math component tests", () => {
         // because it is passed in as P(X_1) and katex should subscript the 1
         expect(container).toHaveTextContent("P(X1");
     });
+
+    it("shouldn't render anything if passed an empty equation", () => {
+        props = {
+            equation: '',
+        };
+        const { container } = renderComponent();
+
+        expect(container).toBeEmptyDOMElement();
+    });
+
+    it("shouldn't render anything if not passed an equation", () => {
+        props = {} as MathProps;
+        const { container } = renderComponent();
+
+        expect(container).toBeEmptyDOMElement();
+    });
 });
