@@ -9,7 +9,7 @@ const Animate: React.FC<AnimateProps> = ({ children }) => {
     const ref = useRef();
 
     useEffect(() => {
-        setAnimateState([...animateState, { element: ref, shown: false }]);
+        setAnimateState((animateState) => [...animateState, { element: ref, shown: false }]);
     }, []);
 
     useEffect(() => {

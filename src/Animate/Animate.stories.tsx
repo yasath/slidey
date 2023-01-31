@@ -13,6 +13,9 @@ export const BulletList = () => (
             <Animate>
                 <p>Some example slide text would go here</p>
             </Animate>
+            <Animate>
+                <p>Some example slide text would go here</p>
+            </Animate>
         </Slide>
     </Presentation>
 );
