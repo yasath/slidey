@@ -58,16 +58,8 @@ const CurrentSlide = styled.strong`
     color: #000;
 `;
 
-const getNestedSlides = (nodeChildren: ReactNode) => {
-    let children = Children.toArray(nodeChildren);
-    while (children.length < 2) {
-        children = Children.map(children, (element: ReactElement) => element.props.children);
-    }
-    return children as ReactChild[];
-}
-
 const Presentation: React.FC<PresentationProps> = ({ children }) => {
-    const arraySlides: ReactChild[] = getNestedSlides(children);
+    const arraySlides: ReactChild[] = Children.toArray(children).map((child: ReactChild) => child);
     const [slideIndex, setSlideIndex] = useState(0);
 
     const keyHandler = (e: KeyboardEvent) => {
