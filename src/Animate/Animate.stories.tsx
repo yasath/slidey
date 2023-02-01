@@ -21,6 +21,21 @@ export const SingleElements = () => (
     </Presentation>
 );
 
+export const BulletList = () => (
+    <Presentation>
+        <Slide title="Animated bullet list">
+            <p>Navigate forwards to see the bullet items animate in!</p>
+            <Animate>
+                <ul>
+                    <li>Here's the first bullet point...</li>
+                    <li>And now a second one...</li>
+                    <li>Finally, here's the third one!</li>
+                </ul>
+            </Animate>
+        </Slide>
+    </Presentation>
+);
+
 export const MultipleElements = () => (
     <Presentation>
         <Slide title="One Animate component" subtitle="With multiple child elements">

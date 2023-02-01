@@ -1,4 +1,4 @@
-import React, { Children, MutableRefObject, useContext, useEffect, useRef, useState } from "react";
+import React, { Children, MutableRefObject, ReactElement, useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 import { AnimateProps } from "./Animate.types";
@@ -13,8 +13,11 @@ const Animate: React.FC<AnimateProps> = ({ children }) => {
     const { animateState, setAnimateState } = useContext(AnimateContext);
     const [shownArray, setShownArray] = useState<boolean[]>([]);
 
-    const arrayChildren = Children.toArray(children);
+    let arrayChildren = Children.toArray(children);
     const childRefs: MutableRefObject<HTMLSpanElement>[] = [];
+    if (['ul', 'ol'].includes((arrayChildren[0] as ReactElement).type as string)) {
+        arrayChildren = Children.toArray((arrayChildren[0] as ReactElement).props.children);
+    }
     arrayChildren.forEach(() => childRefs.push(useRef()));
 
     useEffect(() => {
