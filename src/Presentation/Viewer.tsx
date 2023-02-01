@@ -79,7 +79,6 @@ const Viewer = ({ arraySlides, slideIndex, setSlideIndex }: ViewerProps) => {
             setShouldShowAll(false);
         }
     }, [shouldShowAll, animateState]);
-
     const goLeft = () => {
         if (animateState.filter((item) => item.shown).length === 0) {
             setSlideIndex((slideIndex) => slideIndex - 1);
@@ -106,12 +105,27 @@ const Viewer = ({ arraySlides, slideIndex, setSlideIndex }: ViewerProps) => {
         }
     };
 
+    const cannotGoLeft = () => animateState.filter((item) => item.shown).length === 0 && slideIndex === 0;
+    const cannotGoRight = () => animateState.filter((item) => !item.shown).length === 0 && slideIndex === arraySlides.length - 1;
+    const keyHandler = (e: KeyboardEvent) => {
+        if (e.key === 'ArrowLeft' && !cannotGoLeft()) {
+            goLeft();
+        }
+        if ((e.key === 'ArrowRight' || e.key === ' ') && !cannotGoRight()) {
+            goRight();
+        }
+    };
+    useEffect(() => {
+        window.addEventListener('keydown', keyHandler, false);
+        return () => window.removeEventListener('keydown', keyHandler, false);
+    }, [keyHandler]);
+
     return (
         <ViewerContainer>
             {arraySlides[slideIndex]}
             <ControlsContainer>
                 <NavButton
-                    disabled={animateState.filter((item) => item.shown).length === 0 && slideIndex === 0}
+                    disabled={cannotGoLeft()}
                     onClick={goLeft}
                     data-testid="previous-slide"
                 >
@@ -123,7 +137,7 @@ const Viewer = ({ arraySlides, slideIndex, setSlideIndex }: ViewerProps) => {
                 </SlideCounter>
 
                 <NavButton
-                    disabled={animateState.filter((item) => !item.shown).length === 0 && slideIndex === arraySlides.length - 1}
+                    disabled={cannotGoRight()}
                     onClick={goRight}
                     data-testid="next-slide"
                 >
