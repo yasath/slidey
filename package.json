@@ -1,6 +1,6 @@
 {
     "name": "@yasath/slidey",
-    "version": "0.0.10",
+    "version": "0.0.11",
     "main": "build/index.js",
     "module": "build/index.esm.js",
     "files": [
