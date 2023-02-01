@@ -71,13 +71,44 @@ const Viewer = ({ arraySlides, slideIndex, setSlideIndex }: ViewerProps) => {
         console.log(animateState);
     }, [animateState]);
 
+    const goLeft = () => {
+        /* TODO check if all animations ONLY FOR THIS SLIDE haven't been shown */
+        if (animateState.filter((item) => item.shown).length === 0) {
+            setSlideIndex(slideIndex - 1);
+        }
+
+        if (animateState.length > 0) {
+            const mostRecentElement = animateState.reverse().findIndex((item) => item.shown);
+            setAnimateState((animateState) => {
+                const newState = [...animateState];
+                newState[mostRecentElement].shown = false;
+                return newState;
+            });
+        }
+    };
+    const goRight = () => {
+        /* TODO check if all animations ONLY FOR THIS SLIDE are done */
+        if (animateState.filter((item) => !item.shown).length === 0) {
+            setSlideIndex(slideIndex + 1);
+        }
+
+        if (animateState.length > 0) {
+            const nextElement = animateState.findIndex((item) => !item.shown);
+            setAnimateState((animateState) => {
+                const newState = [...animateState];
+                newState[nextElement].shown = true;
+                return newState;
+            });
+        }
+    };
+
     return (
         <ViewerContainer>
             {arraySlides[slideIndex]}
             <ControlsContainer>
                 <NavButton
-                    disabled={slideIndex == 0}
-                    onClick={() => setSlideIndex(slideIndex - 1)}
+                    disabled={animateState.filter((item) => item.shown).length === 0 && slideIndex === 0}
+                    onClick={goLeft}
                     data-testid="previous-slide"
                 >
                     <ChevronLeft />
@@ -88,8 +119,8 @@ const Viewer = ({ arraySlides, slideIndex, setSlideIndex }: ViewerProps) => {
                 </SlideCounter>
 
                 <NavButton
-                    disabled={slideIndex == arraySlides.length - 1}
-                    onClick={() => setSlideIndex(slideIndex + 1)}
+                    disabled={animateState.filter((item) => !item.shown).length === 0 && slideIndex === arraySlides.length - 1}
+                    onClick={goRight}
                     data-testid="next-slide"
                 >
                     <ChevronRight />
