@@ -1,6 +1,6 @@
 import React, { createContext, Dispatch, MutableRefObject, ReactNode, SetStateAction, useState } from 'react';
 
-type AnimateState = { element: MutableRefObject<any>, shown: boolean }[];
+type AnimateState = { element: MutableRefObject<HTMLSpanElement>, shown: boolean }[];
 
 export const AnimateContext = createContext<{ animateState: AnimateState, setAnimateState: Dispatch<SetStateAction<AnimateState>> }>({ animateState: [], setAnimateState: () => { } });
 
