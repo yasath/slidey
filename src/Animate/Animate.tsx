@@ -21,7 +21,7 @@ const Animate: React.FC<AnimateProps> = ({ children }) => {
     if (['ul', 'ol'].includes((arrayChildren[0] as ReactElement).type as string)) {
         arrayChildren = Children.toArray((arrayChildren[0] as ReactElement).props.children);
     }
-    arrayChildren = arrayChildren.filter((child) => (child as ReactElement).props.children);
+    arrayChildren = arrayChildren.filter((child) => (child as ReactElement).props && (child as ReactElement).props.children);
     arrayChildren.forEach(() => childRefs.push(useRef()));
 
     useEffect(() => {
