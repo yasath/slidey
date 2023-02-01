@@ -1,4 +1,4 @@
-import React, { Dispatch, ReactChild, SetStateAction, useContext, useEffect } from "react";
+import React, { Dispatch, ReactChild, SetStateAction, useContext, useEffect, useState } from "react";
 
 import styled from "styled-components";
 
@@ -67,32 +67,36 @@ interface ViewerProps {
 
 const Viewer = ({ arraySlides, slideIndex, setSlideIndex }: ViewerProps) => {
     const { animateState, setAnimateState } = useContext(AnimateContext);
+    const [shouldShowAll, setShouldShowAll] = useState(false);
+
     useEffect(() => {
-        console.log(animateState);
-    }, [animateState]);
-
-    const goLeft = () => {
-        /* TODO check if all animations ONLY FOR THIS SLIDE haven't been shown */
-        if (animateState.filter((item) => item.shown).length === 0) {
-            setSlideIndex(slideIndex - 1);
-        }
-
-        if (animateState.length > 0) {
-            const mostRecentElement = animateState.reverse().findIndex((item) => item.shown);
+        if (shouldShowAll && animateState.filter((item) => item.element.current).length > 0) {
             setAnimateState((animateState) => {
                 const newState = [...animateState];
-                newState[mostRecentElement].shown = false;
+                newState.forEach((item) => item.shown = true);
+                return newState;
+            });
+            setShouldShowAll(false);
+        }
+    }, [shouldShowAll, animateState]);
+
+    const goLeft = () => {
+        if (animateState.filter((item) => item.shown).length === 0) {
+            setSlideIndex((slideIndex) => slideIndex - 1);
+            setShouldShowAll(true);
+        } else {
+            const mostRecentElement = animateState.slice().reverse().findIndex((item) => item.shown);
+            setAnimateState((animateState) => {
+                const newState = [...animateState];
+                newState[animateState.length - 1 - mostRecentElement].shown = false;
                 return newState;
             });
         }
     };
     const goRight = () => {
-        /* TODO check if all animations ONLY FOR THIS SLIDE are done */
         if (animateState.filter((item) => !item.shown).length === 0) {
-            setSlideIndex(slideIndex + 1);
-        }
-
-        if (animateState.length > 0) {
+            setSlideIndex((slideIndex) => slideIndex + 1);
+        } else {
             const nextElement = animateState.findIndex((item) => !item.shown);
             setAnimateState((animateState) => {
                 const newState = [...animateState];

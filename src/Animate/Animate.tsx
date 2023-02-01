@@ -16,6 +16,10 @@ const Animate: React.FC<AnimateProps> = ({ children }) => {
 
     useEffect(() => {
         setAnimateState((animateState) => [...animateState, { element: ref, shown: false }]);
+
+        return () => {
+            setAnimateState((animateState) => animateState.filter((item) => item.element !== ref));
+        }
     }, []);
 
     useEffect(() => {
