@@ -7,6 +7,7 @@ import { AnimateContext } from "./AnimateContext";
 const AnimateSpan = styled.span<{ shown: boolean }>`
     transition: all 0.1s ease-in-out;
     opacity: ${(props) => props.shown ? '100%' : '0%'};
+    visibility: ${(props) => props.shown ? 'visible' : 'hidden'};
 `;
 
 const Animate: React.FC<AnimateProps> = ({ children }) => {
