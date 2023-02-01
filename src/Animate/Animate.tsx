@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { Children, MutableRefObject, useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 import { AnimateProps } from "./Animate.types";
@@ -11,28 +11,46 @@ const AnimateSpan = styled.span<{ shown: boolean }>`
 
 const Animate: React.FC<AnimateProps> = ({ children }) => {
     const { animateState, setAnimateState } = useContext(AnimateContext);
-    const [shown, setShown] = useState(false);
-    const ref = useRef();
+    const [shownArray, setShownArray] = useState<boolean[]>([]);
+
+    const arrayChildren = Children.toArray(children);
+    const childRefs: MutableRefObject<HTMLSpanElement>[] = [];
+    arrayChildren.forEach(() => childRefs.push(useRef()));
 
     useEffect(() => {
-        setAnimateState((animateState) => [...animateState, { element: ref, shown: false }]);
+        childRefs.forEach((ref) => {
+            setShownArray((shownArray) => [...shownArray, false]);
+            setAnimateState((animateState) => [...animateState, { element: ref, shown: false }]);
+        })
 
         return () => {
-            setAnimateState((animateState) => animateState.filter((item) => item.element !== ref));
+            childRefs.forEach((ref) => {
+                setAnimateState((animateState) => animateState.filter((item) => item.element !== ref));
+            });
         }
     }, []);
 
     useEffect(() => {
-        const found = animateState.find((item) => item.element === ref);
-        if (found) {
-            setShown(found.shown);
-        }
+        childRefs.forEach((ref) => {
+            const found = animateState.find((item) => item.element === ref);
+            if (found) {
+                setShownArray((shownArray) => {
+                    const newArray = [...shownArray];
+                    newArray[childRefs.indexOf(ref)] = found.shown;
+                    return newArray;
+                });
+            }
+        });
     }, [animateState]);
 
     return (
-        <AnimateSpan ref={ref} shown={shown}>
-            {children}
-        </AnimateSpan>
+        <>
+            {arrayChildren.map((child, index) => (
+                <AnimateSpan ref={childRefs[index]} shown={shownArray[index]} key={index}>
+                    {child}
+                </AnimateSpan>
+            ))}
+        </>
     );
 }
 
