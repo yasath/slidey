@@ -212,4 +212,11 @@ describe("Test Component", () => {
         expect(window.getComputedStyle(second).visibility).toBe('visible');
         expect(window.getComputedStyle(third).visibility).toBe('visible');
     });
+
+    it("should not render anything if no children are passed", () => {
+        props.children = null;
+
+        const { container } = renderComponent();
+        expect(container.getElementsByClassName('markdown-body')[0]).toBeEmptyDOMElement();
+    });
 });

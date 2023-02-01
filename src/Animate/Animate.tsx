@@ -15,6 +15,8 @@ const Animate: React.FC<AnimateProps> = ({ children }) => {
     const [shownArray, setShownArray] = useState<boolean[]>([]);
 
     let arrayChildren = Children.toArray(children);
+    if (arrayChildren.length < 1) return (<></>);
+
     const childRefs: MutableRefObject<HTMLSpanElement>[] = [];
     if (['ul', 'ol'].includes((arrayChildren[0] as ReactElement).type as string)) {
         arrayChildren = Children.toArray((arrayChildren[0] as ReactElement).props.children);
