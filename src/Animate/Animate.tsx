@@ -1,7 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
+import styled from "styled-components";
 
 import { AnimateProps } from "./Animate.types";
 import { AnimateContext } from "./AnimateContext";
+
+const AnimateSpan = styled.span<{ shown: boolean }>`
+    transition: all 0.2s ease-in-out;
+    opacity: ${(props) => props.shown ? '100%' : '0%'};
+`;
 
 const Animate: React.FC<AnimateProps> = ({ children }) => {
     const { animateState, setAnimateState } = useContext(AnimateContext);
@@ -20,9 +26,9 @@ const Animate: React.FC<AnimateProps> = ({ children }) => {
     }, [animateState]);
 
     return (
-        <span ref={ref} style={{ opacity: shown ? '100%' : '0%' }}>
+        <AnimateSpan ref={ref} shown={shown}>
             {children}
-        </span>
+        </AnimateSpan>
     );
 }
 
