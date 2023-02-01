@@ -5,7 +5,7 @@ import { AnimateProps } from "./Animate.types";
 import { AnimateContext } from "./AnimateContext";
 
 const AnimateSpan = styled.span<{ shown: boolean }>`
-    transition: all 0.2s ease-in-out;
+    transition: all 0.1s ease-in-out;
     opacity: ${(props) => props.shown ? '100%' : '0%'};
 `;
 
