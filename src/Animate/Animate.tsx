@@ -11,7 +11,7 @@ const AnimateSpan = styled.span<{ shown: boolean }>`
 `;
 
 const Animate: React.FC<AnimateProps> = ({ children }) => {
-    const { animateState, setAnimateState } = useContext(AnimateContext);
+    const { animateState, setAnimateState, inContext } = useContext(AnimateContext);
     const [shownArray, setShownArray] = useState<boolean[]>([]);
 
     let arrayChildren = Children.toArray(children);
@@ -51,11 +51,17 @@ const Animate: React.FC<AnimateProps> = ({ children }) => {
 
     return (
         <>
-            {arrayChildren.map((child, index) => (
-                <AnimateSpan ref={childRefs[index]} shown={shownArray[index]} key={index}>
-                    {child}
-                </AnimateSpan>
-            ))}
+            {arrayChildren.map((child, index) =>
+                inContext ? (
+                    <AnimateSpan ref={childRefs[index]} shown={shownArray[index]} key={index}>
+                        {child}
+                    </AnimateSpan>
+                ) : (
+                    <span key={index}>
+                        {child}
+                    </span>
+                )
+            )}
         </>
     );
 }
