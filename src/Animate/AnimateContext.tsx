@@ -8,7 +8,7 @@ export const AnimateProvider = ({ children }: { children: ReactNode }) => {
     const [animateState, setAnimateState] = useState<AnimateState>([]);
 
     useEffect(() => {
-        setAnimateState((animateState) => animateState.filter((item) => item.element.current.innerHTML.length > 0));
+        setAnimateState((animateState) => animateState.filter((item) => item.element.current.innerHTML.trim().length > 0));
     }, [animateState]);
 
     return (
