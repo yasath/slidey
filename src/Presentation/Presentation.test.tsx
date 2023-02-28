@@ -89,4 +89,9 @@ describe("Presentation component tests", () => {
         expect(container).toHaveTextContent("Third slide");
         expect(container).toHaveTextContent("3 of 3");
     });
+
+    it("should not show controls if requested", () => {
+        const { container } = render(<Presentation showControls={false} {...props} />);
+        expect(container).not.toHaveTextContent("1 of 3");
+    });
 });

@@ -4,13 +4,13 @@ import { PresentationProps } from "./Presentation.types";
 import { AnimateProvider } from "../Animate/AnimateContext";
 import Viewer from "./Viewer";
 
-const Presentation: React.FC<PresentationProps> = ({ children }) => {
+const Presentation: React.FC<PresentationProps> = ({ children, showControls = true }) => {
     const arraySlides: ReactChild[] = Children.toArray(children).map((child: ReactChild) => child);
     const [slideIndex, setSlideIndex] = useState(0);
 
     return (
         <AnimateProvider>
-            <Viewer arraySlides={arraySlides} slideIndex={slideIndex} setSlideIndex={setSlideIndex} />
+            <Viewer arraySlides={arraySlides} slideIndex={slideIndex} setSlideIndex={setSlideIndex} showControls={showControls} />
         </AnimateProvider>
     );
 }

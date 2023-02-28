@@ -63,9 +63,10 @@ interface ViewerProps {
     arraySlides: ReactChild[];
     slideIndex: number;
     setSlideIndex: Dispatch<SetStateAction<number>>;
+    showControls: boolean;
 }
 
-const Viewer = ({ arraySlides, slideIndex, setSlideIndex }: ViewerProps) => {
+const Viewer = ({ arraySlides, slideIndex, setSlideIndex, showControls }: ViewerProps) => {
     const { animateState, setAnimateState } = useContext(AnimateContext);
     const [shouldShowAll, setShouldShowAll] = useState(false);
 
@@ -123,27 +124,29 @@ const Viewer = ({ arraySlides, slideIndex, setSlideIndex }: ViewerProps) => {
     return (
         <ViewerContainer>
             {arraySlides[slideIndex]}
-            <ControlsContainer>
-                <NavButton
-                    disabled={cannotGoLeft()}
-                    onClick={goLeft}
-                    data-testid="previous-slide"
-                >
-                    <ChevronLeft />
-                </NavButton>
+            {showControls && (
+                <ControlsContainer>
+                    <NavButton
+                        disabled={cannotGoLeft()}
+                        onClick={goLeft}
+                        data-testid="previous-slide"
+                    >
+                        <ChevronLeft />
+                    </NavButton>
 
-                <SlideCounter>
-                    <CurrentSlide>{slideIndex + 1}</CurrentSlide> of {arraySlides.length}
-                </SlideCounter>
+                    <SlideCounter>
+                        <CurrentSlide>{slideIndex + 1}</CurrentSlide> of {arraySlides.length}
+                    </SlideCounter>
 
-                <NavButton
-                    disabled={cannotGoRight()}
-                    onClick={goRight}
-                    data-testid="next-slide"
-                >
-                    <ChevronRight />
-                </NavButton>
-            </ControlsContainer>
+                    <NavButton
+                        disabled={cannotGoRight()}
+                        onClick={goRight}
+                        data-testid="next-slide"
+                    >
+                        <ChevronRight />
+                    </NavButton>
+                </ControlsContainer>
+            )}
         </ViewerContainer>
     )
 }
