@@ -15,7 +15,7 @@ const Img = styled.img<{ width?: number, rounded?: boolean }>`
     border-radius: ${props => props.rounded ? '8px' : '0px'};
 `;
 
-const Image: React.FC<ImageProps> = ({ src, alt, width, rounded }) => (
+const Image: React.FC<ImageProps> = ({ src, alt, width, rounded = true }) => (
     <ImageContainer>
         <Img width={width} rounded={rounded} src={src} alt={alt || ''} data-testid="image" />
     </ImageContainer>
