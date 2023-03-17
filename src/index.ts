@@ -3,5 +3,6 @@ import Math from "./Math";
 import Presentation from "./Presentation";
 import Animate from "./Animate";
 import Image from "./Image";
+import Columns, { Column } from "./Columns";
 
-export { Slide, Math, Presentation, Animate, Image };
+export { Slide, Math, Presentation, Animate, Image, Columns, Column };
