@@ -25,3 +25,14 @@ DarkThemeSlide.args = {
     subtitle: "Slide subtitle",
     dark: true,
 }
+
+export const CentredSlide = ({ title, subtitle, centre }) => (
+    <Slide title={title} subtitle={subtitle} centre={centre}>
+        <p>Some example slide text would go here</p>
+    </Slide>
+);
+CentredSlide.args = {
+    title: "Slide title",
+    subtitle: "Slide subtitle",
+    centre: true,
+}

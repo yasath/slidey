@@ -32,6 +32,7 @@ describe("Slide component tests", () => {
 
     it("should render light mode correctly", () => {
         const { container } = renderComponent();
+
         expect(container.innerHTML).toContain('markdown-body');
         expect(container.innerHTML).not.toContain('markdown-body-dark');
     });
@@ -39,6 +40,18 @@ describe("Slide component tests", () => {
     it("should render dark mode correctly", () => {
         props.dark = true;
         const { container } = renderComponent();
+
         expect(container.innerHTML).toContain('markdown-body-dark');
+    });
+
+    it("should render centred slide correctly", () => {
+        props.centre = true;
+        const { container } = renderComponent();
+
+        expect(getComputedStyle(container.firstChild as Element).textAlign).toBe('center');
+        expect(getComputedStyle(container.firstChild as Element).display).toBe('flex');
+        expect(getComputedStyle(container.firstChild as Element).flexDirection).toBe('column');
+        expect(getComputedStyle(container.firstChild as Element).alignItems).toBe('center');
+        expect(getComputedStyle(container.firstChild as Element).justifyContent).toBe('center');
     });
 });
