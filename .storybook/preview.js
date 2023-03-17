@@ -50,6 +50,7 @@ export const parameters = {
             order: ['Slide', '*'],
         },
     },
+    controls: { expanded: true },
 };
 
 /**
