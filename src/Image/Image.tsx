@@ -7,7 +7,7 @@ const ImageContainer = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 `;
 
 const Img = styled.img<{ width?: number, rounded?: boolean }>`
