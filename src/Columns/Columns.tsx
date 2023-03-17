@@ -8,6 +8,7 @@ const ColumnContainer = styled.div<{ number: number }>`
     grid-template-columns: repeat(${({ number }) => number}, 1fr);
     column-gap: 2rem;
     margin-top: 1rem;
+    margin-bottom: 0.5rem;
 `;
 
 const Columns: React.FC<ColumnsProps> = ({ number, children }) => (
