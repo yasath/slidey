@@ -14,3 +14,14 @@ RegularSlide.args = {
     title: "Slide title",
     subtitle: "Slide subtitle",
 }
+
+export const DarkThemeSlide = ({ title, subtitle, dark }) => (
+    <Slide title={title} subtitle={subtitle} dark={dark}>
+        <p>Some example slide text would go here</p>
+    </Slide>
+);
+DarkThemeSlide.args = {
+    title: "Slide title",
+    subtitle: "Slide subtitle",
+    dark: true,
+}

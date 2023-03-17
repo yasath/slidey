@@ -29,4 +29,16 @@ describe("Slide component tests", () => {
 
         expect(container).toHaveTextContent("Example children");
     });
+
+    it("should render light mode correctly", () => {
+        const { container } = renderComponent();
+        expect(container.innerHTML).toContain('markdown-body');
+        expect(container.innerHTML).not.toContain('markdown-body-dark');
+    });
+
+    it("should render dark mode correctly", () => {
+        props.dark = true;
+        const { container } = renderComponent();
+        expect(container.innerHTML).toContain('markdown-body-dark');
+    });
 });

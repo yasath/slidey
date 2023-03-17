@@ -40,6 +40,11 @@ export default {
                     src: "src/github-markdown-light.css",
                     dest: "build",
                     rename: "github-markdown-light.css"
+                },
+                {
+                    src: "src/github-markdown-dark.css",
+                    dest: "build",
+                    rename: "github-markdown-dark.css"
                 }
             ]
         })
