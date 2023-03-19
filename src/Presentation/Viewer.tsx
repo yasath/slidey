@@ -59,6 +59,10 @@ const CurrentSlide = styled.strong`
     color: #000;
 `;
 
+const HiddenContainer = styled.div`
+    display: contents;
+`;
+
 interface ViewerProps {
     arraySlides: ReactChild[];
     slideIndex: number;
@@ -116,6 +120,11 @@ const Viewer = ({ arraySlides, slideIndex, setSlideIndex, showControls }: Viewer
             goRight();
         }
     };
+    const clickHandler = () => {
+        if (!cannotGoRight()) {
+            goRight();
+        }
+    };
     useEffect(() => {
         window.addEventListener('keydown', keyHandler, false);
         return () => window.removeEventListener('keydown', keyHandler, false);
@@ -123,7 +132,9 @@ const Viewer = ({ arraySlides, slideIndex, setSlideIndex, showControls }: Viewer
 
     return (
         <ViewerContainer>
-            {arraySlides[slideIndex]}
+            <HiddenContainer onClick={clickHandler} data-testid="current-slide">
+                {arraySlides[slideIndex]}
+            </HiddenContainer>
             {showControls && (
                 <ControlsContainer>
                     <NavButton

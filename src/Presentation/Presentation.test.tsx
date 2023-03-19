@@ -90,6 +90,19 @@ describe("Presentation component tests", () => {
         expect(container).toHaveTextContent("3 of 3");
     });
 
+    it("should navigate through slides on click", () => {
+        const { container } = renderComponent();
+        const clickEvent = () => fireEvent.click(getByTestId(container, 'current-slide'));
+
+        clickEvent();
+        expect(container).toHaveTextContent("Second slide");
+        expect(container).toHaveTextContent("2 of 3");
+
+        clickEvent();
+        expect(container).toHaveTextContent("Third slide");
+        expect(container).toHaveTextContent("3 of 3");
+    });
+
     it("should not show controls if requested", () => {
         const { container } = render(<Presentation showControls={false} {...props} />);
         expect(container).not.toHaveTextContent("1 of 3");

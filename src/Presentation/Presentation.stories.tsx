@@ -24,7 +24,7 @@ export const WithoutControls = () => (
     <Presentation showControls={false}>
         <Slide title="First slide">
             <p>Some example slide text would go here</p>
-            <p>Navigate using arrow keys or the spacebar</p>
+            <p>Navigate by clicking, or by using arrow keys or the spacebar</p>
         </Slide>
         <Slide title="Second slide">
             <p>Some example slide text would go here</p>
