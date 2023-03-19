@@ -1,12 +1,12 @@
-import React from "react";
-import { render, fireEvent, getByTestId } from "@testing-library/react";
+import React from 'react';
+import { render, fireEvent, getByTestId } from '@testing-library/react';
 
-import Animate from "./Animate";
-import { AnimateProps } from "./Animate.types";
-import Presentation from "../Presentation";
-import Slide from "../Slide";
+import Presentation from '../Presentation';
+import Slide from '../Slide';
+import Animate from './Animate';
+import { type AnimateProps } from './Animate.types';
 
-describe("Test Component", () => {
+describe('Test Component', () => {
     let props: AnimateProps;
 
     beforeEach(() => {
@@ -17,24 +17,24 @@ describe("Test Component", () => {
                     <p data-testid="2">Individual element two</p>
                     <p data-testid="3">Individual element three</p>
                 </Animate>
-            )
+            ),
         };
     });
 
     const renderComponent = () => render(
         <Presentation>
             <Slide {...props} />
-        </Presentation>
+        </Presentation>,
     );
 
-    it("should show the correct elements when navigating forwards", () => {
+    it('should show the correct elements when navigating forwards', () => {
         const { container } = renderComponent();
-        const nextSlideButton = getByTestId(container, "next-slide");
-        const clickEvent = new MouseEvent("click", { bubbles: true });
+        const nextSlideButton = getByTestId(container, 'next-slide');
+        const clickEvent = new MouseEvent('click', { bubbles: true });
 
-        const first = getByTestId(container, "1").parentElement!;
-        const second = getByTestId(container, "2").parentElement!;
-        const third = getByTestId(container, "3").parentElement!;
+        const first = getByTestId(container, '1').parentElement;
+        const second = getByTestId(container, '2').parentElement;
+        const third = getByTestId(container, '3').parentElement;
 
         expect(window.getComputedStyle(first).visibility).toBe('hidden');
         expect(window.getComputedStyle(second).visibility).toBe('hidden');
@@ -56,15 +56,15 @@ describe("Test Component", () => {
         expect(window.getComputedStyle(third).visibility).toBe('visible');
     });
 
-    it("should show the correct elements when navigating backwards", () => {
+    it('should show the correct elements when navigating backwards', () => {
         const { container } = renderComponent();
-        const previousSlideButton = getByTestId(container, "previous-slide");
-        const nextSlideButton = getByTestId(container, "next-slide");
-        const clickEvent = new MouseEvent("click", { bubbles: true });
+        const previousSlideButton = getByTestId(container, 'previous-slide');
+        const nextSlideButton = getByTestId(container, 'next-slide');
+        const clickEvent = new MouseEvent('click', { bubbles: true });
 
-        const first = getByTestId(container, "1").parentElement!;
-        const second = getByTestId(container, "2").parentElement!;
-        const third = getByTestId(container, "3").parentElement!;
+        const first = getByTestId(container, '1').parentElement;
+        const second = getByTestId(container, '2').parentElement;
+        const third = getByTestId(container, '3').parentElement;
 
         fireEvent(nextSlideButton, clickEvent);
         fireEvent(nextSlideButton, clickEvent);
@@ -90,15 +90,15 @@ describe("Test Component", () => {
         expect(window.getComputedStyle(third).visibility).toBe('hidden');
     });
 
-    it("should show the correct elements when navigating forwards then backwards", () => {
+    it('should show the correct elements when navigating forwards then backwards', () => {
         const { container } = renderComponent();
-        const previousSlideButton = getByTestId(container, "previous-slide");
-        const nextSlideButton = getByTestId(container, "next-slide");
-        const clickEvent = new MouseEvent("click", { bubbles: true });
+        const previousSlideButton = getByTestId(container, 'previous-slide');
+        const nextSlideButton = getByTestId(container, 'next-slide');
+        const clickEvent = new MouseEvent('click', { bubbles: true });
 
-        const first = getByTestId(container, "1").parentElement!;
-        const second = getByTestId(container, "2").parentElement!;
-        const third = getByTestId(container, "3").parentElement!;
+        const first = getByTestId(container, '1').parentElement;
+        const second = getByTestId(container, '2').parentElement;
+        const third = getByTestId(container, '3').parentElement;
 
         expect(window.getComputedStyle(first).visibility).toBe('hidden');
         expect(window.getComputedStyle(second).visibility).toBe('hidden');
@@ -135,7 +135,7 @@ describe("Test Component", () => {
         expect(window.getComputedStyle(third).visibility).toBe('hidden');
     });
 
-    it("should independently animate list items in an unordered list", () => {
+    it('should independently animate list items in an unordered list', () => {
         props.children = (
             <Animate>
                 <ul>
@@ -147,12 +147,12 @@ describe("Test Component", () => {
         );
 
         const { container } = renderComponent();
-        const nextSlideButton = getByTestId(container, "next-slide");
-        const clickEvent = new MouseEvent("click", { bubbles: true });
+        const nextSlideButton = getByTestId(container, 'next-slide');
+        const clickEvent = new MouseEvent('click', { bubbles: true });
 
-        const first = getByTestId(container, "1").parentElement!;
-        const second = getByTestId(container, "2").parentElement!;
-        const third = getByTestId(container, "3").parentElement!;
+        const first = getByTestId(container, '1').parentElement;
+        const second = getByTestId(container, '2').parentElement;
+        const third = getByTestId(container, '3').parentElement;
 
         expect(window.getComputedStyle(first).visibility).toBe('hidden');
         expect(window.getComputedStyle(second).visibility).toBe('hidden');
@@ -174,7 +174,7 @@ describe("Test Component", () => {
         expect(window.getComputedStyle(third).visibility).toBe('visible');
     });
 
-    it("should independently animate list items in an ordered list", () => {
+    it('should independently animate list items in an ordered list', () => {
         props.children = (
             <Animate>
                 <ol>
@@ -186,12 +186,12 @@ describe("Test Component", () => {
         );
 
         const { container } = renderComponent();
-        const nextSlideButton = getByTestId(container, "next-slide");
-        const clickEvent = new MouseEvent("click", { bubbles: true });
+        const nextSlideButton = getByTestId(container, 'next-slide');
+        const clickEvent = new MouseEvent('click', { bubbles: true });
 
-        const first = getByTestId(container, "1").parentElement!;
-        const second = getByTestId(container, "2").parentElement!;
-        const third = getByTestId(container, "3").parentElement!;
+        const first = getByTestId(container, '1').parentElement;
+        const second = getByTestId(container, '2').parentElement;
+        const third = getByTestId(container, '3').parentElement;
 
         expect(window.getComputedStyle(first).visibility).toBe('hidden');
         expect(window.getComputedStyle(second).visibility).toBe('hidden');
@@ -213,10 +213,10 @@ describe("Test Component", () => {
         expect(window.getComputedStyle(third).visibility).toBe('visible');
     });
 
-    it("should not render anything if no children are passed", () => {
+    it('should not render anything if no children are passed', () => {
         props.children = null;
 
         const { container } = renderComponent();
-        expect(container.getElementsByClassName('markdown-body')[0]).toBeEmptyDOMElement();
+        expect(container.querySelectorAll('.markdown-body')[0]).toBeEmptyDOMElement();
     });
 });

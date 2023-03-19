@@ -1,10 +1,10 @@
-import React from "react";
-import { render } from "@testing-library/react";
+import React from 'react';
+import { render } from '@testing-library/react';
 
-import Math from "./Math";
-import { MathProps } from "./Math.types";
+import Math from './Math';
+import { type MathProps } from './Math.types';
 
-describe("Math component tests", () => {
+describe('Math component tests', () => {
     let props: MathProps;
 
     beforeEach(() => {
@@ -18,15 +18,15 @@ describe("Math component tests", () => {
 
     const renderComponent = () => render(<Math {...props} />);
 
-    it("should render a block equation without crashing", () => {
+    it('should render a block equation without crashing', () => {
         const { container } = renderComponent();
 
-        // this is just checking that katex has done *something* with the equation
+        // This is just checking that katex has done *something* with the equation
         // because it is passed in as P(X_1) and katex should subscript the 1
-        expect(container).toHaveTextContent("P(X1");
+        expect(container).toHaveTextContent('P(X1');
     });
 
-    it("shouldn't render anything if passed an empty equation", () => {
+    it('shouldn\'t render anything if passed an empty equation', () => {
         props = {
             equation: '',
         };
@@ -35,8 +35,8 @@ describe("Math component tests", () => {
         expect(container).toBeEmptyDOMElement();
     });
 
-    it("shouldn't render anything if not passed an equation", () => {
-        props = {} as MathProps;
+    it('shouldn\'t render anything if not passed an equation', () => {
+        props = { equation: '' };
         const { container } = renderComponent();
 
         expect(container).toBeEmptyDOMElement();

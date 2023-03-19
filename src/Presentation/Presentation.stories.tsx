@@ -1,9 +1,9 @@
-import React from "react";
-import Slide from "../Slide";
-import Presentation from "./Presentation";
+import React from 'react';
+import Slide from '../Slide';
+import Presentation from './Presentation';
 
 export default {
-    title: "Presentation"
+    title: 'Presentation',
 };
 
 export const WithControls = () => (

@@ -1,3 +1,3 @@
-export interface MathProps {
+export type MathProps = {
     equation: string;
-}
+};

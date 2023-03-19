@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import { type ReactNode } from 'react';
 
-export interface PresentationProps {
+export type PresentationProps = {
     children: ReactNode;
     showControls?: boolean;
-}
+};

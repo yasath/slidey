@@ -1,10 +1,10 @@
-import React from "react";
-import { getByTestId, render } from "@testing-library/react";
+import React from 'react';
+import { getByTestId, render } from '@testing-library/react';
 
-import Columns from "./Columns";
-import { ColumnsProps } from "./Columns.types";
+import Columns from './Columns';
+import { type ColumnsProps } from './Columns.types';
 
-describe("Test Component", () => {
+describe('Test Component', () => {
     let props: ColumnsProps;
 
     beforeEach(() => {
@@ -16,15 +16,15 @@ describe("Test Component", () => {
                     <p>Column 2</p>
                     <p>Column 3</p>
                 </>
-            )
+            ),
         };
     });
 
     const renderComponent = () => render(<Columns {...props} />);
 
-    it("should have the correct number of columns", () => {
+    it('should have the correct number of columns', () => {
         const { container } = renderComponent();
-        const columnContainer = getByTestId(container, "column-container");
+        const columnContainer = getByTestId(container, 'column-container');
 
         expect(columnContainer.children.length).toBe(3);
         expect(columnContainer).toHaveStyle('grid-template-columns: repeat(3,1fr)');

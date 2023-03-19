@@ -1,7 +1,7 @@
-import React, { Children, ReactElement } from "react";
-import styled from "styled-components";
+import React, { Children, type ReactElement } from 'react';
+import styled from 'styled-components';
 
-import { ColumnsProps, ColumnProps } from "./Columns.types";
+import { type ColumnsProps, type ColumnProps } from './Columns.types';
 
 const ColumnContainer = styled.div<{ number: number }>`
     display: grid;
@@ -12,7 +12,10 @@ const ColumnContainer = styled.div<{ number: number }>`
 
 const Columns: React.FC<ColumnsProps> = ({ number, children }) => {
     let arrayChildren = Children.toArray(children);
-    if (arrayChildren.length < 1) return (<></>);
+    if (arrayChildren.length === 0) {
+        return (<></>);
+    }
+
     const firstChildType = (arrayChildren[0] as ReactElement).type as string;
     if (['ul', 'ol'].includes(firstChildType)) {
         arrayChildren = Children.toArray((arrayChildren[0] as ReactElement).props.children);
@@ -29,7 +32,7 @@ const Columns: React.FC<ColumnsProps> = ({ number, children }) => {
             {arrayChildren}
         </ColumnContainer>
     );
-}
+};
 
 export default Columns;
 

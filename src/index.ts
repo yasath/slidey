@@ -1,8 +1,7 @@
-import Slide from "./Slide";
-import Math from "./Math";
-import Presentation from "./Presentation";
-import Animate from "./Animate";
-import Image from "./Image";
-import Columns, { Column } from "./Columns";
 
-export { Slide, Math, Presentation, Animate, Image, Columns, Column };
+export { default as Slide } from './Slide';
+export { default as Math } from './Math';
+export { default as Presentation } from './Presentation';
+export { default as Animate } from './Animate';
+export { default as Image } from './Image';
+export { default as Columns, Column } from './Columns';

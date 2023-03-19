@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { ImageProps } from "./Image.types";
+import { type ImageProps } from './Image.types';
 
 const ImageContainer = styled.div`
     width: 100%;
@@ -10,8 +10,8 @@ const ImageContainer = styled.div`
     align-items: flex-start;
 `;
 
-const Img = styled.img<{ width?: number, rounded?: boolean }>`
-    width: ${props => props.width ? props.width + '%' : '50%'};
+const Img = styled.img<{ width?: number; rounded?: boolean }>`
+    width: ${props => props.width ? `${props.width}%` : '50%'};
     border-radius: ${props => props.rounded ? '8px' : '0px'};
 `;
 

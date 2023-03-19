@@ -1,10 +1,10 @@
-import React from "react";
-import Slide from "../Slide";
-import Presentation from "../Presentation";
-import Animate from "./Animate";
+import React from 'react';
+import Slide from '../Slide';
+import Presentation from '../Presentation';
+import Animate from './Animate';
 
 export default {
-    title: "Animate"
+    title: 'Animate',
 };
 
 export const SingleElements = () => (
@@ -12,10 +12,10 @@ export const SingleElements = () => (
         <Slide title="Individual Animate components">
             <p>Navigate forwards to see the items animate in!</p>
             <Animate>
-                <p>Here's the first <code>Animate</code> component...</p>
+                <p>Here&apos;s the first <code>Animate</code> component...</p>
             </Animate>
             <Animate>
-                <p>And here's another one!</p>
+                <p>And here&apos;s another one!</p>
             </Animate>
         </Slide>
     </Presentation>
@@ -27,9 +27,9 @@ export const BulletList = () => (
             <p>Navigate forwards to see the bullet items animate in!</p>
             <Animate>
                 <ul>
-                    <li>Here's the first bullet point...</li>
+                    <li>Here&apos;s the first bullet point...</li>
                     <li>And now a second one...</li>
-                    <li>Finally, here's the third one!</li>
+                    <li>Finally, here&apos;s the third one!</li>
                 </ul>
             </Animate>
         </Slide>

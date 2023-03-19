@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
+import { type ReactNode } from 'react';
 
-export interface AnimateProps {
+export type AnimateProps = {
     children: ReactNode;
-}
+};

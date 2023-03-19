@@ -1,10 +1,10 @@
-import { ReactNode } from "react";
+import { type ReactNode } from 'react';
 
-export interface ColumnsProps {
+export type ColumnsProps = {
     number: number;
     children: ReactNode | ReactNode[];
-}
+};
 
-export interface ColumnProps {
+export type ColumnProps = {
     children: ReactNode | ReactNode[];
-}
+};

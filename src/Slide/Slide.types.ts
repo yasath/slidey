@@ -1,9 +1,9 @@
-import { ReactNode } from "react";
+import { type ReactNode } from 'react';
 
-export interface SlideProps {
+export type SlideProps = {
     title?: string;
     subtitle?: string;
     dark?: boolean;
     centre?: boolean;
     children?: ReactNode;
-}
+};

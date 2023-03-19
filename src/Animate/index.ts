@@ -1,1 +1,1 @@
-export { default } from "./Animate";
+export { default } from './Animate';

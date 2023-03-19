@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import "../github-markdown-light.css";
-import "../github-markdown-dark.css";
+import '../github-markdown-light.css';
+import '../github-markdown-dark.css';
 
-import { SlideProps } from "./Slide.types";
+import { type SlideProps } from './Slide.types';
 
-const SlideContainer = styled.div<{ dark?: boolean, centre?: boolean }>`
+const SlideContainer = styled.div<{ dark?: boolean; centre?: boolean }>`
     width: 100%;
     aspect-ratio: 16/9;
     border: 1px solid ${props => props.dark ? '#21262d' : 'hsla(210, 18%, 87%, 1)'};

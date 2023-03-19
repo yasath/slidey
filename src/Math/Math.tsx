@@ -1,8 +1,9 @@
-import React from "react";
-import { InlineMath } from "react-katex";
+import React from 'react';
+import { InlineMath } from 'react-katex';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'katex/dist/katex.min.css';
 
-import { MathProps } from "./Math.types";
+import { type MathProps } from './Math.types';
 
 const Math: React.FC<MathProps> = ({ equation }) => (
     <>
