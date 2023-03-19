@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="77.51" height="77.51"><svg id="SvgjsSvg1001" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 77.51 77.51">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #000;
+      }
+    </style>
+  </defs>
+  <g id="SvgjsG1000" data-name="Layer 1">
+    <g>
+      <circle class="cls-2" cx="38.76" cy="38.76" r="38.76"></circle>
+      <path class="cls-1" d="M29.98,49.12c1.09,4.14,4.47,6.47,9.84,6.47s7.25-1.91,7.25-5.06c0-3.34-2.23-4.65-9.68-6.47-16.93-4.17-19.71-9.42-19.71-16.75s5.4-15.74,21.08-15.74,21.1,8.61,21.55,15.65h-13.69c-.46-1.92-1.74-5.55-8.51-5.55-4.76,0-6.3,2.11-6.3,4.45,0,2.59,1.61,3.83,10.05,5.8,17.34,4.03,19.8,9.98,19.8,17.6,0,8.61-6.55,16.44-22.4,16.44s-22.3-7.62-23.44-16.83h14.14Z"></path>
+    </g>
+  </g>
+</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: invert(100%); } }
+</style></svg>
