@@ -11,7 +11,7 @@
     },
     "repository": "git://github.com/yasath/slidey",
     "types": "build/index.d.ts",
-    "description": "React presentations without having to understand the React",
+    "description": "Create presentations with basic React components",
     "scripts": {
         "build": "rollup -c",
         "test": "jest",

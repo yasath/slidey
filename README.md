@@ -2,7 +2,21 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-React presentations without having to understand the React
+Create presentations with basic React components.
+
+## Usage
+
+Before running any of the commands listed below, you must install the required dependencies. To do this, first install [Node.js](https://nodejs.org) and then run the following command in the project directory:
+
+```
+npm install
+```
+
+To run a live-reloading Storybook (component sandbox) server on your local machine:
+
+```
+npm run storybook
+```
 
 ## Development
 
@@ -16,20 +30,6 @@ npm run test
 
 ```
 npm run build
-```
-
-### Storybook
-
-To run a live-reloading Storybook server on your local machine:
-
-```
-npm run storybook
-```
-
-To export the Storybook as static files:
-
-```
-npm run storybook:export
 ```
 
 ### Generating new components
@@ -49,6 +49,7 @@ This will generate:
         YourComponentName.stories.tsx
         YourComponentName.test.tsx
         YourComponentName.types.ts
+        index.ts
 ```
 
 The component must also be added to the `src/index.ts` exports for the library to export the component.
