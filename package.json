@@ -6,6 +6,9 @@
     "files": [
         "build"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
     "repository": "git://github.com/yasath/slidey",
     "types": "build/index.d.ts",
     "description": "Create presentations with basic React components",
