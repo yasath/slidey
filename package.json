@@ -1,14 +1,11 @@
 {
     "name": "@yasath/slidey",
-    "version": "0.0.28",
+    "version": "1.0.0",
     "main": "build/index.js",
     "module": "build/index.esm.js",
     "files": [
         "build"
     ],
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com"
-    },
     "repository": "git://github.com/yasath/slidey",
     "types": "build/index.d.ts",
     "description": "Create presentations with basic React components",
