@@ -10,6 +10,7 @@
         "access": "public"
     },
     "repository": "git://github.com/yasath/slidey",
+    "homepage": "https://slidey-storybook.yasath.me",
     "types": "build/index.d.ts",
     "description": "Create presentations with basic React components",
     "scripts": {
