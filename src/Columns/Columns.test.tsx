@@ -29,4 +29,11 @@ describe('Test Component', () => {
         expect(columnContainer.children.length).toBe(3);
         expect(columnContainer).toHaveStyle('grid-template-columns: repeat(3,1fr)');
     });
+
+    it('should not render anything if no children are passed', () => {
+        props.children = null;
+
+        const { container } = renderComponent();
+        expect(container).toBeEmptyDOMElement();
+    });
 });
